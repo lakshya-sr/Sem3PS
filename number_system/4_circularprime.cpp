@@ -16,7 +16,7 @@ int count_digits(int n)
 
 bool check_prime(int n)
 {
-	for(int i = 1; i < n; i++)
+	for(int i = 2; i < n; i++)
 	{
 		if(n % i == 0) return false;
 	}
@@ -29,13 +29,13 @@ bool check_cyclic_prime(int n)
 	bool prime = true;
 	do
 	{
-		
+		cout << temp << endl;
 		if (!check_prime(temp))
 		{
 			prime = false;
 			break;
 		}
-		temp = (temp % (int)pow(10, num_digits - 1)) * 10 + temp / (int)pow(10, num_digits - 1);
+		temp = (temp % 10) * (int)pow(10, num_digits-1) + temp / 10;
 	}while(temp != n);
 	
 	return prime;
@@ -50,3 +50,8 @@ int main()
 //	}
 	return 0;
 }
+
+
+
+//1234567
+//(num % 10) * 10^(num_digits-1) + num / 10
